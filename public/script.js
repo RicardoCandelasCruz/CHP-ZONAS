@@ -1,14 +1,45 @@
 const btnBuscar = document.getElementById('btnBuscar');
+const btnSeleccionar = document.getElementById('btnSeleccionar');
 const searchInput = document.getElementById('search');
+const sucursalSelect = document.getElementById('sucursalSelect');
+
+// Cargar sucursales en el select
+async function cargarSucursales() {
+  try {
+    const response = await fetch('/sucursales.json');
+    const sucursales = await response.json();
+    
+    sucursales.forEach(sucursal => {
+      const option = document.createElement('option');
+      option.value = sucursal.nombre;
+      option.textContent = sucursal.nombre;
+      sucursalSelect.appendChild(option);
+    });
+  } catch (error) {
+    console.error('Error cargando sucursales:', error);
+  }
+}
 
 if (btnBuscar) {
   btnBuscar.addEventListener('click', buscarSucursal);
+}
+
+if (btnSeleccionar) {
+  btnSeleccionar.addEventListener('click', seleccionarSucursal);
 }
 
 if (searchInput) {
   searchInput.addEventListener('keypress', function(e) {
     if (e.key === 'Enter') {
       buscarSucursal();
+    }
+  });
+}
+
+if (sucursalSelect) {
+  sucursalSelect.addEventListener('change', function() {
+    if (this.value) {
+      seleccionarSucursal();
     }
   });
 }
@@ -123,3 +154,30 @@ function mostrarError(mensaje) {
     error.classList.remove('hidden');
   }
 }
+
+async function seleccionarSucursal() {
+  const sucursalNombre = sucursalSelect.value;
+  
+  if (!sucursalNombre) {
+    mostrarError('Selecciona una sucursal');
+    return;
+  }
+
+  try {
+    const response = await fetch('/sucursales.json');
+    const sucursales = await response.json();
+    
+    const sucursal = sucursales.find(s => s.nombre === sucursalNombre);
+    
+    if (sucursal) {
+      mostrarResultado(sucursal);
+    } else {
+      mostrarError('Sucursal no encontrada');
+    }
+  } catch (error) {
+    mostrarError('Error de conexión');
+  }
+}
+
+// Cargar sucursales al iniciar
+window.addEventListener('load', cargarSucursales);

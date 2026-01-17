@@ -10,15 +10,30 @@
 
 <header class="header">
   <h1>🍕 Cheese Pizza</h1>
-  <p>Busca el fraccionamiento o colonia.</p>
+  <p>Busca tu fraccionamiento o sucursal</p>
 
-  <div class="controls">
-    <input
-      id="search"
-      type="text"
-      placeholder="Fraccionamientos o Colonias"
-    >
-    <button id="btnBuscar">Buscar</button>
+  <div class="search-container">
+    <div class="search-section">
+      <label for="search">Buscar por fraccionamiento:</label>
+      <div class="search-input-group">
+        <input
+          id="search"
+          type="text"
+          placeholder="Ej. Haciendas, Calicantos, Ojocaliente..."
+        >
+        <button id="btnBuscar">Buscar</button>
+      </div>
+    </div>
+
+    <div class="search-section">
+      <label for="sucursalSelect">Seleccionar sucursal:</label>
+      <div class="select-group">
+        <select id="sucursalSelect">
+          <option value="">-- Selecciona una sucursal --</option>
+        </select>
+        <button id="btnSeleccionar">Ver Sucursal</button>
+      </div>
+    </div>
   </div>
 </header>
 
