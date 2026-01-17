@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cheese Pizza Zonas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <h1>🍕 Cheese Pizza</h1>
+  <p>Busca el fraccionamiento o colonia.</p>
+
+  <div class="controls">
+    <input
+      id="search"
+      type="text"
+      placeholder="Fraccionamientos o Colonias"
+    >
+    <button id="btnBuscar">Buscar</button>
+  </div>
+</header>
+
+<main>
+  <!-- Resultado -->
+  <div id="resultado" class="resultado hidden">
+    <h2 id="nombreSucursal"></h2>
+
+    <p><strong>Teléfono:</strong> <span id="telefono"></span></p>
+
+    <div class="acciones">
+      <a id="btnWhatsapp" target="_blank">WhatsApp de la Sucursal</a>
+      <a id="btnLlamar">Llamar a Sucursal</a>
+    </div>
+
+    <div class="zonas">
+      <h3>Fraccionamientos que atiende:</h3>
+      <ul id="listaZonas"></ul>
+    </div>
+  </div>
+
+  <!-- Mensaje de error -->
+  <div id="error" class="error hidden">
+    ❌ No encontramos una sucursal para esa zona
+  </div>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

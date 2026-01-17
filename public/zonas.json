@@ -1,0 +1,68 @@
+[
+{
+"sucursal": "Haciendas",
+"color": "#ff6b6b",
+"center": { "lat": 21.9325, "lng": -102.2700 },
+"coordenadas": [
+{ "lat": 21.9385, "lng": -102.2760 },
+{ "lat": 21.9385, "lng": -102.2640 },
+{ "lat": 21.9265, "lng": -102.2640 },
+{ "lat": 21.9265, "lng": -102.2760 }
+]
+},
+{
+"sucursal": "Pocitos",
+"color": "#4cc9f0",
+"center": { "lat": 21.9000, "lng": -102.2800 },
+"coordenadas": [
+{ "lat": 21.9060, "lng": -102.2860 },
+{ "lat": 21.9060, "lng": -102.2740 },
+{ "lat": 21.8940, "lng": -102.2740 },
+{ "lat": 21.8940, "lng": -102.2860 }
+]
+},
+{
+"sucursal": "Villasunción",
+"color": "#ffd166",
+"center": { "lat": 21.9200, "lng": -102.2500 },
+"coordenadas": [
+{ "lat": 21.9260, "lng": -102.2560 },
+{ "lat": 21.9260, "lng": -102.2440 },
+{ "lat": 21.9140, "lng": -102.2440 },
+{ "lat": 21.9140, "lng": -102.2560 }
+]
+},
+{
+"sucursal": "Américas",
+"color": "#9b5de5",
+"center": { "lat": 21.8700, "lng": -102.3000 },
+"coordenadas": [
+{ "lat": 21.8760, "lng": -102.3060 },
+{ "lat": 21.8760, "lng": -102.2940 },
+{ "lat": 21.8640, "lng": -102.2940 },
+{ "lat": 21.8640, "lng": -102.3060 }
+]
+},
+{
+"sucursal": "Plaza Santa Maria (Calicantos)",
+"color": "#06d6a0",
+"center": { "lat": 21.8800, "lng": -102.3200 },
+"coordenadas": [
+{ "lat": 21.8860, "lng": -102.3260 },
+{ "lat": 21.8860, "lng": -102.3140 },
+{ "lat": 21.8740, "lng": -102.3140 },
+{ "lat": 21.8740, "lng": -102.3260 }
+]
+},
+{
+"sucursal": "Siglo XXI / Solidaridad",
+"color": "#ef476f",
+"center": { "lat": 21.9120, "lng": -102.2600 },
+"coordenadas": [
+{ "lat": 21.9180, "lng": -102.2660 },
+{ "lat": 21.9180, "lng": -102.2540 },
+{ "lat": 21.9060, "lng": -102.2540 },
+{ "lat": 21.9060, "lng": -102.2660 }
+]
+}
+]
