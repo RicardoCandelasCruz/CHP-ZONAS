@@ -3,13 +3,13 @@ const path = require('path');
 const fs = require('fs');
 
 const app = express();
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname)); // Servir archivos desde la raíz
 app.use(express.json());
 
 // Cargar datos de sucursales con manejo de errores
 let sucursales = [];
 try {
-  const data = fs.readFileSync(path.join(__dirname, 'public', 'sucursales.json'), 'utf8');
+  const data = fs.readFileSync(path.join(__dirname, 'sucursales.json'), 'utf8');
   sucursales = JSON.parse(data);
 } catch (error) {
   console.error('Error cargando sucursales.json:', error.message);
