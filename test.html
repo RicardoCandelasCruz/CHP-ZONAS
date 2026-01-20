@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Cheese Pizza</title>
+</head>
+<body>
+    <h1>Test del Sistema</h1>
+    <button onclick="testPHP()">Probar PHP</button>
+    <button onclick="testJSON()">Probar JSON</button>
+    <div id="resultado"></div>
+
+    <script>
+        async function testPHP() {
+            try {
+                const response = await fetch('buscar-sucursal.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ direccion: 'haciendas' })
+                });
+                const data = await response.json();
+                document.getElementById('resultado').innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+            } catch (error) {
+                document.getElementById('resultado').innerHTML = 'Error: ' + error.message;
+            }
+        }
+
+        async function testJSON() {
+            try {
+                const response = await fetch('sucursales.json');
+                const data = await response.json();
+                document.getElementById('resultado').innerHTML = '<pre>' + JSON.stringify(data.slice(0,2), null, 2) + '</pre>';
+            } catch (error) {
+                document.getElementById('resultado').innerHTML = 'Error: ' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -6,7 +6,7 @@ const sucursalSelect = document.getElementById('sucursalSelect');
 // Cargar sucursales en el select
 async function cargarSucursales() {
   try {
-    const response = await fetch('/sucursales.json');
+    const response = await fetch('sucursales.json');
     const sucursales = await response.json();
     
     sucursales.forEach(sucursal => {
@@ -65,7 +65,8 @@ async function buscarSucursal() {
   }
 
   try {
-    const response = await fetch('/buscar-sucursal', {
+    // Usar PHP para servidor web
+    const response = await fetch('buscar-sucursal.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -164,7 +165,7 @@ async function seleccionarSucursal() {
   }
 
   try {
-    const response = await fetch('/sucursales.json');
+    const response = await fetch('sucursales.json');
     const sucursales = await response.json();
     
     const sucursal = sucursales.find(s => s.nombre === sucursalNombre);
