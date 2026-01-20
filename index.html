@@ -38,29 +38,120 @@
 </header>
 
 <main>
-  <!-- Resultado -->
   <div id="resultado" class="resultado hidden">
     <h2 id="nombreSucursal"></h2>
-
     <p><strong>Teléfono:</strong> <span id="telefono"></span></p>
-
     <div class="acciones">
-      <a id="btnWhatsapp" target="_blank">WhatsApp de la Sucursal</a>
-      <a id="btnLlamar">Llamar a Sucursal</a>
+      <a id="btnWhatsapp" target="_blank">WhatsApp</a>
+      <a id="btnLlamar">Llamar</a>
     </div>
-
     <div class="zonas">
-      <h3>Fraccionamientos que atiende:</h3>
+      <h3>Fraccionamientos:</h3>
       <ul id="listaZonas"></ul>
     </div>
   </div>
 
-  <!-- Mensaje de error -->
   <div id="error" class="error hidden">
     ❌ No encontramos una sucursal para esa zona
   </div>
 </main>
 
-<script src="script.js"></script>
+<script>
+const btnBuscar = document.getElementById('btnBuscar');
+const btnSeleccionar = document.getElementById('btnSeleccionar');
+const searchInput = document.getElementById('search');
+const sucursalSelect = document.getElementById('sucursalSelect');
+
+let sucursalesData = [];
+
+async function cargarSucursales() {
+  try {
+    const response = await fetch('sucursales.json');
+    sucursalesData = await response.json();
+    
+    sucursalesData.forEach(sucursal => {
+      const option = document.createElement('option');
+      option.value = sucursal.nombre;
+      option.textContent = sucursal.nombre;
+      sucursalSelect.appendChild(option);
+    });
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+btnBuscar.addEventListener('click', buscarSucursal);
+btnSeleccionar.addEventListener('click', seleccionarSucursal);
+
+searchInput.addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') {
+    buscarSucursal();
+  }
+});
+
+function buscarSucursal() {
+  const direccion = document.getElementById('search').value.trim().toLowerCase();
+  
+  if (!direccion) {
+    mostrarError('Escribe un fraccionamiento');
+    return;
+  }
+
+  for (let sucursal of sucursalesData) {
+    for (let frac of sucursal.fraccionamientos) {
+      if (frac.toLowerCase().includes(direccion)) {
+        mostrarResultado(sucursal);
+        return;
+      }
+    }
+  }
+  
+  mostrarError('No encontramos una sucursal para esa zona');
+}
+
+function mostrarResultado(sucursal) {
+  document.getElementById('error').classList.add('hidden');
+  document.getElementById('resultado').classList.remove('hidden');
+  
+  document.getElementById('nombreSucursal').textContent = sucursal.nombre;
+  document.getElementById('telefono').textContent = sucursal.telefono;
+  
+  document.getElementById('btnWhatsapp').href = `https://wa.me/52${sucursal.whatsapp}?text=Hola, quiero hacer un pedido`;
+  document.getElementById('btnLlamar').href = `tel:${sucursal.telefono}`;
+  
+  const lista = document.getElementById('listaZonas');
+  lista.innerHTML = '';
+  sucursal.fraccionamientos.forEach(f => {
+    const li = document.createElement('li');
+    li.textContent = f;
+    lista.appendChild(li);
+  });
+}
+
+function mostrarError(mensaje) {
+  document.getElementById('resultado').classList.add('hidden');
+  document.getElementById('error').textContent = mensaje;
+  document.getElementById('error').classList.remove('hidden');
+}
+
+function seleccionarSucursal() {
+  const sucursalNombre = sucursalSelect.value;
+  
+  if (!sucursalNombre) {
+    mostrarError('Selecciona una sucursal');
+    return;
+  }
+
+  const sucursal = sucursalesData.find(s => s.nombre === sucursalNombre);
+  
+  if (sucursal) {
+    mostrarResultado(sucursal);
+  } else {
+    mostrarError('Sucursal no encontrada');
+  }
+}
+
+window.addEventListener('load', cargarSucursales);
+</script>
 </body>
 </html>

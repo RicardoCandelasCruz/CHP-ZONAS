@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Test Conexión</title>
+</head>
+<body>
+    <h1>Test de Conexión</h1>
+    <button onclick="testConnection()">Probar Conexión</button>
+    <button onclick="testSearch()">Probar Búsqueda</button>
+    <div id="result"></div>
+
+    <script>
+        async function testConnection() {
+            try {
+                const response = await fetch('./test-connection.php');
+                const data = await response.json();
+                document.getElementById('result').innerHTML = 'Conexión: ' + JSON.stringify(data);
+            } catch (error) {
+                document.getElementById('result').innerHTML = 'Error: ' + error.message;
+            }
+        }
+
+        async function testSearch() {
+            try {
+                const response = await fetch('./buscar-sucursal.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ direccion: 'haciendas' })
+                });
+                const data = await response.json();
+                document.getElementById('result').innerHTML = 'Búsqueda: ' + JSON.stringify(data);
+            } catch (error) {
+                document.getElementById('result').innerHTML = 'Error: ' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Test Simple</title>
+</head>
+<body>
+    <h1>Test</h1>
+    <button onclick="test()">Probar JSON</button>
+    <div id="result"></div>
+
+    <script>
+        async function test() {
+            try {
+                const response = await fetch('sucursales.json');
+                const data = await response.json();
+                document.getElementById('result').innerHTML = 'OK: ' + data.length + ' sucursales';
+            } catch (error) {
+                document.getElementById('result').innerHTML = 'ERROR: ' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>

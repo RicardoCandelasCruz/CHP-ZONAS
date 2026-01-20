@@ -144,7 +144,7 @@
     ]
   },
     {
-    "nombre": "Plaza Santa Maria (Calicantos)",
+    "nombre": "Plaza Santa Maria",
     "telefono": "449-567-8901",
     "whatsapp": "4495678901",
     "fraccionamientos": [
@@ -154,26 +154,15 @@
       "Santa María"
     ]
   },
-   {
-    "nombre": "Plaza Santa Maria (Calicantos)",
-    "telefono": "449-567-8901",
-    "whatsapp": "4495678901",
-    "fraccionamientos": [
-      "Calicantos",
-      "Plaza Santa María",
-      "Colonia Calicantos",
-      "Santa María"
-    ]
-  },
-   {
+  {
     "nombre": "Villas de Nuestra Señora de la Asuncion",
-    "telefono": "449-567-8901",
-    "whatsapp": "4495678901",
+    "telefono": "449-567-8902",
+    "whatsapp": "4495678902",
     "fraccionamientos": [
-      "Calicantos",
-      "Plaza Santa María",
-      "Colonia Calicantos",
-      "Santa María"
+      "Villas de Nuestra Señora de la Asunción",
+      "Asunción",
+      "Villas de la Asunción",
+      "Nuestra Señora"
     ]
   },
   {
