@@ -116,8 +116,17 @@ function mostrarResultado(sucursal) {
   document.getElementById('nombreSucursal').textContent = sucursal.nombre;
   document.getElementById('telefono').textContent = sucursal.telefono;
   
-  document.getElementById('btnWhatsapp').href = `https://wa.me/52${sucursal.whatsapp}?text=Hola, quiero hacer un pedido`;
-  document.getElementById('btnLlamar').href = `tel:${sucursal.telefono}`;
+  // Limpiar número de WhatsApp
+  const whatsappNum = sucursal.whatsapp && sucursal.whatsapp !== 'null' ? sucursal.whatsapp.replace(/\s/g, '') : null;
+  
+  if (whatsappNum) {
+    document.getElementById('btnWhatsapp').href = `https://wa.me/52${whatsappNum}?text=Hola, quiero hacer un pedido`;
+    document.getElementById('btnWhatsapp').style.display = 'inline-block';
+  } else {
+    document.getElementById('btnWhatsapp').style.display = 'none';
+  }
+  
+  document.getElementById('btnLlamar').href = `tel:${sucursal.telefono.replace(/\s/g, '')}`;
   
   const lista = document.getElementById('listaZonas');
   lista.innerHTML = '';
